@@ -1,5 +1,5 @@
 import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
-import { Bot, Context } from "https://deno.land/x/grammy@v1.26.0/mod.ts";
+import { Bot, Context, Keyboard } from "https://deno.land/x/grammy@v1.26.0/mod.ts";
 
 // load the environment variables from a .env file
 const env = await load();
@@ -11,28 +11,29 @@ if (!TELEGRAM_TOKEN) {
 }
 const bot = new Bot(TELEGRAM_TOKEN); // <-- put your bot token between the ""
 
-// You can now register listeners on your bot object `bot`.
-// grammY will call the listeners when users send messages to your bot.
+const keyboard = new Keyboard()
+  .text("Yes, they certainly are").row()
+  .text("I'm not quite sure").row()
+  .text("No. 😈")
+  .resized()
+  .persistent();
 
-// Handle the /start command.
-bot.command("start", (ctx: Context) => {
-  let reply_parameters = undefined
-  if(ctx.msg) {
-    reply_parameters = { message_id: ctx.msg.message_id }
-  }
-  ctx.reply("Welcome! Up and running.");
-  ctx.reply(
-    '<b>Hi!</b> <i>Welcome</i> to <a href="https://grammy.dev">grammY sangres</a>.',
-    { parse_mode: "HTML", reply_parameters: reply_parameters },
-  )
+bot.hears("Yes, they certainly are", (ctx: Context) => {
+  ctx.reply("Great! Let's get started!");
 })
-// Handle other messages.
-bot.on("message", (ctx: Context) => {
-  ctx.reply("Got another message!")
+
+bot.hears("I'm not quite sure", (ctx: Context) => {
+  ctx.reply("No worries! Take your time to think about it.");
+})
+
+bot.hears("No. 😈", (ctx: Context) => {
+  ctx.reply("That's okay! Maybe next time.");
+})
+
+bot.command("start", (ctx: Context) => {
+  ctx.reply("Hello! Are you ready to start?", {
+    reply_markup: keyboard,
+  });
 });
 
-// Now that you specified how to handle messages, you can start your bot.
-// This will connect to the Telegram servers and wait for messages.
-
-// Start the bot.
 bot.start();
