@@ -12,28 +12,33 @@ if (!TELEGRAM_TOKEN) {
 const bot = new Bot(TELEGRAM_TOKEN); // <-- put your bot token between the ""
 
 const keyboard = new Keyboard()
-  .text("Yes, they certainly are").row()
-  .text("I'm not quite sure").row()
-  .text("No. 😈")
+  .text("Fumetti e animazione").row()
+  .text("Videogames").row()
+  .text("Roleplay").row()
+  .text("Assistenza")
   .resized()
   .persistent();
 
-bot.hears("Yes, they certainly are", (ctx: Context) => {
-  ctx.reply("Great! Let's get started!");
-})
-
-bot.hears("I'm not quite sure", (ctx: Context) => {
-  ctx.reply("No worries! Take your time to think about it.");
-})
-
-bot.hears("No. 😈", (ctx: Context) => {
-  ctx.reply("That's okay! Maybe next time.");
-})
-
 bot.command("start", (ctx: Context) => {
-  ctx.reply("Hello! Are you ready to start?", {
+  ctx.reply("Ciao, di cosa hai bisogno?", {
     reply_markup: keyboard,
   });
 });
+
+bot.hears("Fumetti e animazione", (ctx: Context) => {
+  ctx.reply("Messaggio fumetti");
+})
+
+bot.hears("Videogames", (ctx: Context) => {
+  ctx.reply("Messaggio videogames");
+})
+
+bot.hears("Roleplay", (ctx: Context) => {
+  ctx.reply("Messaggio roleplay");
+})
+
+bot.hears("Assistenza", (ctx: Context) => {
+  ctx.reply("Contattare @Draizer per supporto");
+})
 
 bot.start();
