@@ -9,7 +9,7 @@ const TELEGRAM_TOKEN: string | undefined = env["TELEGRAM_TOKEN"];
 if (!TELEGRAM_TOKEN) {
   throw new Error("TELEGRAM_TOKEN is not defined.");
 }
-const bot = new Bot(TELEGRAM_TOKEN); // <-- put your bot token between the ""
+const bot = new Bot(TELEGRAM_TOKEN);
 
 const keyboard = new Keyboard()
   .text("Fumetti e animazione").row()
