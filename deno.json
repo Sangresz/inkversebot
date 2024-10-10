@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "dev": "deno run --watch bot.ts",
+    "main": "DENO_FUTURE=1 deno run --allow-all bot.ts"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}

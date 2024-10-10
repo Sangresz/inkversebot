@@ -1,11 +1,10 @@
-import { load } from "https://deno.land/std@0.224.0/dotenv/mod.ts";
+import "jsr:@std/dotenv/load";
 import { Bot, Context, Keyboard } from "https://deno.land/x/grammy@v1.26.0/mod.ts";
 
 // load the environment variables from a .env file
-const env = await load();
+const TELEGRAM_TOKEN = Deno.env.get("TELEGRAM_TOKEN");
 
 // Create an instance of the `Bot` class and pass your bot token to it.
-const TELEGRAM_TOKEN: string | undefined = env["TELEGRAM_TOKEN"];
 if (!TELEGRAM_TOKEN) {
   throw new Error("TELEGRAM_TOKEN is not defined.");
 }
