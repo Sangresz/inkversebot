@@ -42,3 +42,4 @@ bot.hears("Assistenza", (ctx: Context) => {
 
 bot.start();
 console.log("Bot is up and running!");
+Deno.serve((_req) => new Response("Bot is up and running!"));
