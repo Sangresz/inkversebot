@@ -11,10 +11,10 @@ if (!TELEGRAM_TOKEN) {
 const bot = new Bot(TELEGRAM_TOKEN);
 
 const keyboard = new Keyboard()
-  .text("Fumetti e animazione").row()
-  .text("Videogames").row()
-  .text("Roleplay").row()
-  .text("Assistenza")
+  .text("Canali Telegram / Discord").row()
+  .text("Eventi").row()
+  .text("Contatti").row()
+  .text("Crediti")
   .resized()
   .persistent();
 
@@ -24,20 +24,20 @@ bot.command("start", (ctx: Context) => {
   });
 });
 
-bot.hears("Fumetti e animazione", (ctx: Context) => {
-  ctx.reply("Messaggio fumetti");
+bot.hears("Canali Telegram / Discord", (ctx: Context) => {
+  ctx.reply("Usa questi link per entrare nei canali e condividerli con altri! (a capo) Telegram: https://t.me/+sDYYl18Rv9UwYmE8 , Discord: https://discord.gg/yXeqJZts");
 })
 
-bot.hears("Videogames", (ctx: Context) => {
-  ctx.reply("Messaggio videogames");
+bot.hears("Eventi", (ctx: Context) => {
+  ctx.reply("In questa sezione troverai gli eventi disponibili attualmente o in programma. Clicca su un evento per sapere di più!");
 })
 
-bot.hears("Roleplay", (ctx: Context) => {
-  ctx.reply("Messaggio roleplay");
+bot.hears("Contatti", (ctx: Context) => {
+  ctx.reply("Se noti qualsiasi tipo di problema nei gruppi Telegram o Discord, sentiti libero di scrivere a queste persone \n ... \n Hai un idea o suggerimento da dare alla community? Ti va di collaborare direttamente allo sviluppo della stessa? Contattami! \n ... ");
 })
 
-bot.hears("Assistenza", (ctx: Context) => {
-  ctx.reply("Contattare @Draizer per supporto");
+bot.hears("Crediti", (ctx: Context) => {
+  ctx.reply("Niente sarebbe stato così senza l'aiuto di queste persone: \n ... Owner \n ... Modder/Programmatore"  \n ... Designer \n ");
 })
 
 bot.start();
