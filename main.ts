@@ -37,7 +37,7 @@ bot.hears("Contatti", (ctx: Context) => {
 })
 
 bot.hears("Crediti", (ctx: Context) => {
-  ctx.reply("Niente sarebbe stato così senza l'aiuto di queste persone: \n ... Owner \n ... Modder/Programmatore"  \n ... Designer \n ");
+  ctx.reply("Niente sarebbe stato così senza l'aiuto di queste persone: \n ... Owner \n ... Modder/Programmatore  \n ... Designer \n ");
 })
 
 bot.start();
